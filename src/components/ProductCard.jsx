@@ -4,39 +4,20 @@ import { CartContext } from "../context/CartContext";
 import "../styles/productCard.css";
 
 function ProductCard({ product }) {
-  const { cart, setCart } = useContext(CartContext);
-
-  function addToCart() {
-    const existing = cart.find((item) => item.id === product.id);
-
-    if (existing) {
-      setCart(
-        cart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
-      );
-    } else {
-      setCart([
-        ...cart,
-        {
-          ...product,
-          quantity: 1,
-        },
-      ]);
-    }
-  }
+  const { addToCart } = useContext(CartContext);
 
   return (
     <article className="product-card">
-      <img src={product.image} alt={product.title} />
+      <img
+        src={product.image}
+        alt={product.title}
+      />
 
       <h3>{product.title}</h3>
 
       <p>${product.price}</p>
 
-      <button onClick={addToCart}>
+      <button onClick={() => addToCart(product)}>
         Add To Cart
       </button>
     </article>
