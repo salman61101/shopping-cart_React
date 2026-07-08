@@ -1,41 +1,85 @@
 .product-card {
   background: white;
-  border-radius: 10px;
+  border-radius: 14px;
   padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   text-align: center;
 
-  box-shadow: 0 5px 15px rgba(0,0,0,.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+
+  transition: .3s;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
 }
 
 .product-card img {
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   object-fit: contain;
-
-  margin-bottom: 20px;
+  margin: auto;
 }
 
 .product-card h3 {
-  font-size: 18px;
-  height: 70px;
+  margin: 20px 0 10px;
+  font-size: 1rem;
+  min-height: 50px;
 }
 
-.product-card p {
-  font-size: 22px;
+.rating {
+  color: #f59e0b;
+  margin-bottom: 10px;
+}
+
+.rating span {
+  color: #666;
+}
+
+.price {
+  font-size: 1.3rem;
   font-weight: bold;
-  margin: 20px 0;
+  color: #2563eb;
+  margin-bottom: 15px;
 }
 
-.product-card button {
-  width: 100%;
-  padding: 12px;
+.quantity-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
 
-  border: none;
-  background: #111;
-  color: white;
-
-  cursor: pointer;
-
+.quantity-controls button {
+  width: 35px;
+  height: 35px;
   border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 18px;
+}
+
+.quantity-controls input {
+  width: 55px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.add-btn {
+  padding: 12px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  transition: .3s;
+}
+
+.add-btn:hover {
+  background: #1d4ed8;
 }
