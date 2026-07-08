@@ -13,7 +13,7 @@ function Navbar() {
 
   return (
     <nav>
-      <h2>ShopCart</h2>
+      <h2>🛒 ShopCart</h2>
 
       <ul>
         <li>
@@ -26,7 +26,10 @@ function Navbar() {
 
         <li>
           <NavLink to="/cart">
-            🛒 Cart ({totalItems})
+            Cart
+            <span className="cart-count">
+              {totalItems}
+            </span>
           </NavLink>
         </li>
       </ul>

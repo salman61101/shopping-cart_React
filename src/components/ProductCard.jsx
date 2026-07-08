@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { CartContext } from "../context/CartContext";
 import "../styles/productCard.css";
@@ -6,8 +6,30 @@ import "../styles/productCard.css";
 function ProductCard({ product }) {
   const { addToCart } = useContext(CartContext);
 
+  const [quantity, setQuantity] = useState(1);
+
+  function increaseQuantity() {
+    setQuantity(quantity + 1);
+  }
+
+  function decreaseQuantity() {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  }
+
+  function handleAddToCart() {
+    addToCart({
+      ...product,
+      quantity,
+    });
+
+    setQuantity(1);
+  }
+
   return (
     <article className="product-card">
+
       <img
         src={product.image}
         alt={product.title}
@@ -15,11 +37,43 @@ function ProductCard({ product }) {
 
       <h3>{product.title}</h3>
 
-      <p>${product.price}</p>
+      <div className="rating">
+        ⭐⭐⭐⭐☆
+        <span> ({product.rating.rate})</span>
+      </div>
 
-      <button onClick={() => addToCart(product)}>
+      <p className="price">
+        ${product.price.toFixed(2)}
+      </p>
+
+      <div className="quantity-controls">
+
+        <button onClick={decreaseQuantity}>
+          −
+        </button>
+
+        <input
+          type="number"
+          min="1"
+          value={quantity}
+          onChange={(e) =>
+            setQuantity(Number(e.target.value))
+          }
+        />
+
+        <button onClick={increaseQuantity}>
+          +
+        </button>
+
+      </div>
+
+      <button
+        className="add-btn"
+        onClick={handleAddToCart}
+      >
         Add To Cart
       </button>
+
     </article>
   );
 }
@@ -30,6 +84,9 @@ ProductCard.propTypes = {
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
+    rating: PropTypes.shape({
+      rate: PropTypes.number.isRequired,
+    }).isRequired,
   }).isRequired,
 };
 
