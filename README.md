@@ -7,13 +7,13 @@ A modern and responsive Shopping Cart application built with **React**, **Vite**
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page](./assets/home.png)
+![Home Page](./src/assets/home.png)
 
 ### Shop Page
-![Shop Page](./assets/shop.png)
+![Shop Page](./src/assets/shop.png)
 
 ### Shopping Cart
-![Cart Page](./assets/cart.png)
+![Cart Page](./src/assets/cart.png)
 
 ---
 
